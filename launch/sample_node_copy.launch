@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+ 
+<launch>
+    <include file="$(find rplidar_ros)/launch/rplidar_s2.launch" />
+    <include file="$(find laser_filters)/launch/box_filter_example.launch" />
+    <include file="$(find scan_to_pointcloud2)/launch/Addpointcloud2.launch" /> 
+    <node pkg="tf" type="static_transform_publisher" name="rplidar1"
+    args="-0.075 0.0 0.0 0.0 0.0 0.0 /base_footprint /front_laser_Link 40" />
+  <node pkg="tf" type="static_transform_publisher" name="rplidar2"
+    args="0.075 0.0 0.0 3.14159 0.0 0.0 /base_footprint /back_laser_Link 40" />
+</launch>
